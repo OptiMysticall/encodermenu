@@ -219,9 +219,12 @@ class GetInteger():
         
       
     def on_scroll(self,val):
-        "Change the value displayed as we scroll"
-        self.value = val
-        display(self.caption,str(val * self.increment))
+        "Change the value displayed as we scroll" #Also change by interval and update the array instantly!
+        AmountofChange = val - self.value
+        finalValue = (val - AmountofChange) + (AmountofChange * self.increment)
+        menu_data[self.field] = finalValue  ## update the main arrary INSTANTLY as we scroll ###
+        display(self.caption,str(menu_data[self.field])) ##pull directly from array to display
+        
             
     def on_click(self):
         global menu_data
